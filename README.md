@@ -1,27 +1,35 @@
-#Heart Disease Classification: From Classical Statistics to Modern ML
+Heart Disease Classification: From Classical Statistics to Modern Machine Learning
+Project Overview
+This study investigates the evolution of diagnostic classification methods utilizing the CDC Heart Disease Dataset. The objective is to compare modern machine learning architectures (XGBoost, MLP) with classical statistical approaches, evaluating trade-offs between model complexity, interpretability, and predictive performance. Optimization is focused on Recall to minimize False Negatives, reflecting critical medical requirements where diagnostic omission carries high clinical cost.
 
-##Project Overview
-  This project investigates the evolution of diagnostic classification methods using the CDC Heart Disease Dataset. The primary goal is to compare modern machine learning architectures (XGBoost, MLP) against "classical" statistical approaches to determine the trade-offs between model complexity, interpretability, and predictive power.
-A specific focus is placed on Recall-driven optimization, simulating a real-world medical requirement where missing a sick patient (False Negative) is significantly more costly than a false alarm.
+Evolutionary Stages of Classification
+The project evaluates five distinct algorithmic generations:
 
-##Evolutionary Stages of Classification
-The project implements and compares five distinct generations of algorithms:
-  ###Classical
-    Expert Rules System: A rigid, logic-based classifier simulating early medical protocols (e.g., "If Risk Factors  >3, then High Risk").
-    Point Scoring System: A linear model where features are weighted by their correlation with the target, mimicking diagnostic scoring sheets used in clinical practice.
-    Naive Bayes: A probabilistic approach based on the frequency of symptoms within the population, representing early statistical automation in healthcare.
-  ###Modern
-    XGBoost: A state-of-the-art gradient boosting framework optimized for tabular data.
-    MLP (Multi-Layer Perceptron): A deep learning approach used to capture non-linear relationships within medical indicators.
+Classical Approaches
+Expert Rules System: Logic-based classification simulating standard medical protocols (e.g., threshold-based risk assessment).
 
-##Key Tasks & Objectives
-  Data Preprocessing: Handling categorical medical data, encoding age categories, and normalizing general health metrics.
-  Threshold Engineering: Implementing a custom evaluation loop to find the optimal classification threshold that ensures a Target Recall of 0.95.
-  Comparative Analysis: Analyzing the "False Positive penalty" paid by each model to achieve high sensitivity.
-  Visualization: Generating Confusion Matrices and training logs (Loss/F1 curves) for each approach.
+Point Scoring System: Linear model applying weights based on feature-target correlation, mirroring clinical scoring systems.
 
-##Technical Stack
-  Language: Python 3.11
-  Libraries: pandas, numpy, scikit-learn, xgboost, pytorch, optuna, matplotlib, seaborn
+Naive Bayes: Probabilistic approach calculating symptom frequency within the population, representing early statistical automation.
 
-Here you can see full results of research: "link will be soon"
+Modern Approaches
+XGBoost: Gradient boosting framework optimized for structured tabular data.
+
+MLP (Multi-Layer Perceptron): Neural network architecture identifying non-linear patterns in medical indicators.
+
+Key Tasks and Objectives
+Data Preprocessing: Categorical data encoding, age stratification, and normalization of health metrics.
+
+Threshold Engineering: Implementation of iterative evaluation to achieve a target Recall of 0.95.
+
+Comparative Analysis: Quantification of False Positive rates required to maintain high sensitivity thresholds.
+
+Visualization: Generation of Confusion Matrices and training metrics (Loss/F1 curves).
+
+Technical Stack
+Language: Python 3.11
+
+Libraries: pandas, numpy, scikit-learn, xgboost, pytorch, optuna, matplotlib, seaborn
+
+Results
+Full research results are pending availability.
