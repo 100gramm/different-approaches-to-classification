@@ -69,7 +69,7 @@ different-approaches-to-classification/
 ├── xgb_model.pkl                 ✓ Required
 ├── mlp_training.py
 ├── xgboost_training.py
-├── old_model_training.py
+├── old_model_training.py         ✓ Required
 └── requirements.txt
 ```
 
