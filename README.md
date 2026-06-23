@@ -124,9 +124,9 @@ The application will open in your default web browser at `http://localhost:8501`
 ## Results
 
 ### Threshold Engineering and Clinical Constraints
-In medical diagnostics, the clinical cost of a False Negative (missed disease) is significantly higher than a False Positive (false alarm). To prioritize patient safety, all models in this study were subjected to rigorous **Threshold Engineering**. 
+In medical diagnostics, the clinical cost of a False Negative (missed disease) is significantly higher than a False Positive (false alarm). To prioritize patient safety, all models in this study were subjected to rigorous Threshold Engineering. 
 
-Instead of relying on the default 0.5 classification threshold, our pipeline implements an iterative search across the $[0, 1]$ probability space to identify the specific threshold $T$ that satisfies the medical safety constraint: **Recall $\ge$ 0.95**. By enforcing this 95% sensitivity requirement equally across all models, we isolate their true performance based on **Precision** and **F1-Score**—measuring how effectively each architecture minimizes unnecessary secondary screenings.
+Instead of relying on the default 0.5 classification threshold, our pipeline implements an iterative search across the [0, 1] probability space to identify the specific threshold T that satisfies the medical safety constraint: Recall ≥ 0.95. By enforcing this 95% sensitivity requirement equally across all models, we isolate their true performance based on Precision and F1-Score—measuring how effectively each architecture minimizes unnecessary secondary screenings.
 
 ### Comparative Performance Analysis
 Under the enforced condition of 95% Recall, the models demonstrated the following comparative performance:
@@ -134,13 +134,13 @@ Under the enforced condition of 95% Recall, the models demonstrated the followin
 | Model | Classification Threshold | Precision | F1-Score |
 | :--- | :---: | :---: | :---: |
 | **Expert Rules** | N/A | 0.086 | 0.158 |
-| **Naive Bayes** | 0.045 | 0.091 | 0.165 |
 | **Point Scoring** | 0.082 | 0.134 | 0.229 |
+| **Naive Bayes** | 0.045 | 0.091 | 0.165 |
 | **XGBoost** | 0.115 | 0.138 | 0.234 |
 | **MLP (Neural Network)** | **0.128** | **0.146** | **0.242** |
 
 ### Key Technical Insights
-* **Superiority of Non-Linear Architectures:** The **MLP model** (implemented in `mlp_training.py`) achieved the highest F1-Score (0.242) and Precision (0.146). [cite_start]The neural network’s ability to map non-linear relationships between health metrics (like BMI, age, and smoking habits) allows it to maintain better selectivity than statistical baselines even at high-sensitivity thresholds[cite: 472].
-* [cite_start]**The Precision-Interpretability Trade-off:** While modern methods like **XGBoost** and **MLP** provide a 5-7% absolute improvement in Precision over classical methods, the **Point Scoring** system remains the leader in clinical interpretability[cite: 474]. [cite_start]The Point Scoring model allows clinicians to see exactly how individual weights (calculated via Pearson correlation) contribute to the final risk score, providing a "white-box" alternative that is often preferred in traditional medical protocols[cite: 473].
-* [cite_start]**Impact of Class Imbalance:** The CDC Heart Disease dataset contains a severe imbalance (91.4% Healthy vs 8.6% Heart Disease)[cite: 286, 289]. Our implementation of threshold optimization, combined with stratified splitting, ensures that the model remains robust despite this imbalance, successfully identifying the minority class (Heart Disease) at the required 95% rate.
-* [cite_start]**Pipeline Reliability:** The methodology—moving from preprocessing and threshold scanning to final validation—ensures that the resulting models (saved as `best_model.pth` and `xgb_model.pkl`) are optimized specifically for high-stakes medical screening environments[cite: 366, 370].
+* **Superiority of Non-Linear Architectures:** The MLP model (implemented in mlp_training.py) achieved the highest F1-Score (0.242) and Precision (0.146). The neural network’s ability to map non-linear relationships between health metrics (like BMI, age, and smoking habits) allows it to maintain better selectivity than statistical baselines even at high-sensitivity thresholds.
+* **The Precision-Interpretability Trade-off:** While modern methods like XGBoost and MLP provide a 5-7% absolute improvement in Precision over classical methods, the Point Scoring system remains the leader in clinical interpretability. The Point Scoring model allows clinicians to see exactly how individual weights (calculated via Pearson correlation) contribute to the final risk score, providing a "white-box" alternative that is often preferred in traditional medical protocols.
+* **Impact of Class Imbalance:** The CDC Heart Disease dataset contains a severe imbalance (91.4% Healthy vs 8.6% Heart Disease). Our implementation of threshold optimization, combined with stratified splitting, ensures that the model remains robust despite this imbalance, successfully identifying the minority class (Heart Disease) at the required 95% rate.
+* **Pipeline Reliability:** The methodology—moving from preprocessing and threshold scanning to final validation—ensures that the resulting models (saved as best_model.pth and xgb_model.pkl) are optimized specifically for high-stakes medical screening environments.
